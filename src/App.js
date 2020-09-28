@@ -1,4 +1,5 @@
 import React,{Component} from 'react'; 
+import Addtodo from './component/Addtodo';
 import Todos from './component/Todos';
  
 
@@ -20,11 +21,20 @@ class App extends Component {
       todos:finallist
     })
   }
+
+  addTodo=(todo)=>{
+    let temp = this.state.todos;
+    temp.push(todo);
+    this.setState({
+      todos:temp
+    })
+  }
   render(){
     return (
       <div className="todo-app container">
         <h1 className="center blue-text">React Todo app</h1>
         <Todos todos={this.state.todos} deletetodo={this.deleteTodo}/>
+        <Addtodo todos={this.state.todos} addtodo={this.addTodo}/>
       </div>
     );
   }
